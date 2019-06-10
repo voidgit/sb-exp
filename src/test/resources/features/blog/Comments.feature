@@ -1,7 +1,7 @@
 Feature: Comments
   In order to be sure that my posts are commented by real users
   As a user
-  I want to be able to be sure that comments to my posts' email address has valid format
+  I want to be sure that comments to my posts have email address which is in valid format
 
   Scenario: comment to user's posts should have email addresses in valid format
     Given 'Samantha' already created some posts
