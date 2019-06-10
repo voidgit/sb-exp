@@ -86,12 +86,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
                 <configuration>
-                    <!-- CircleCI build workaround from https://discuss.circleci.com/t/circleci-build-failure-on-openjdk-image/26104-->
+                    <!-- CircleCI build workaround from https://discuss.circleci.com/t/circleci-build-failure-on-openjdk-image/26104 -->
+                    <argLine>${surefireArgLine} -Xms1024m -Xmx2048m</argLine>
+                    <reuseForks>true</reuseForks>
                     <useSystemClassLoader>false</useSystemClassLoader>
-                    <skip>true</skip>
                 </configuration>
+                <version>2.20.1</version><!--$NO-MVN-MAN-VER$-->
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
