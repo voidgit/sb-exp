@@ -13,6 +13,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <serenity.version>2.0.52</serenity.version>
         <serenity.cucumber.version>1.9.39</serenity.cucumber.version>
+
+        <!--ToDo: draft-->
+        <base.uri>https://jsonplaceholder.typicode.com/</base.uri>
     </properties>
 
     <repositories>
@@ -97,6 +100,7 @@
                     </includes>
                     <argLine>-Xmx512m</argLine>
                     <systemPropertyVariables>
+                        <base.uri>${base.uri}</base.uri>
                     </systemPropertyVariables>
                 </configuration>
                 <executions>

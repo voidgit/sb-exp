@@ -7,4 +7,4 @@ Feature: Comments
     Given 'Samantha' already created some posts
     And other users already commented them
     When 'Samantha' checks comments for the posts
-    Then all comments has propely formatted email addresses
+    Then all comments has properly formatted email addresses

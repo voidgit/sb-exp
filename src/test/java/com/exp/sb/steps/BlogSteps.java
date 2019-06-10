@@ -13,8 +13,8 @@ public class BlogSteps {
     BlogUserSteps samantha;
 
     @Given("^'([^']+)' already created some posts$")
-    public void samantha_already_created_some_post(String user) {
-        throw new PendingException();
+    public void samantha_already_created_some_post(String username) {
+        samantha.initExistingUser(username);
     }
 
     @Given("^other users already commented them$")
@@ -23,11 +23,11 @@ public class BlogSteps {
     }
 
     @When("^'([^']+)' checks comments for the posts$")
-    public void samantha_checks_comments_for_the_posts(String user) {
+    public void samantha_checks_comments_for_the_posts(String username) {
         throw new PendingException();
     }
 
-    @Then("^all comments has propely formatted email addresses$")
+    @Then("^all comments has properly formatted email addresses$")
     public void all_comments_has_propely_formatted_email_addresses() {
         throw new PendingException();
     }
