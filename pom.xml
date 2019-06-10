@@ -88,6 +88,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.19.1</version>
                 <configuration>
+                    <!-- CircleCI build workaround from https://discuss.circleci.com/t/circleci-build-failure-on-openjdk-image/26104-->
+                    <useSystemClassLoader>false</useSystemClassLoader>
                     <skip>true</skip>
                 </configuration>
             </plugin>
