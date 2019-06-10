@@ -1,0 +1,4 @@
+Comments
+In order to be sure that my posts are commented by real users
+As a user
+I want to be sure that comments to my posts have email address which is in valid format
