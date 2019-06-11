@@ -28,8 +28,8 @@ public class BlogSteps {
         samantha.fetchAllCommentsForPosts();
     }
 
-    @Then("^all comments has properly formatted email addresses$")
-    public void all_comments_has_propely_formatted_email_addresses() {
+    @Then("^all comments have properly formatted email addresses$")
+    public void all_comments_have_properly_formatted_email_addresses() {
         samantha.verifyThatAllEmailsInCommentsShouldBeValid();
     }
 }

@@ -1,4 +1,4 @@
-package com.exp.sb.apis;
+package com.exp.sb.apis.datamodel;
 
 public class Comment {
     private final String emailAddress;
