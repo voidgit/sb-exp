@@ -5,6 +5,8 @@ import com.exp.sb.apis.datamodel.Comment;
 import com.exp.sb.apis.datamodel.Post;
 import com.exp.sb.apis.datamodel.User;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.util.EnvironmentVariables;
+import net.thucydides.core.util.SystemEnvironmentVariables;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import java.util.List;
@@ -16,19 +18,27 @@ public class BlogUserSteps {
     private User user;
     private List<Post> posts;
     private List<Comment> allCommentsForUsersPosts;
+    private BlogClient blogClient;
+
+    public BlogUserSteps() {
+        EnvironmentVariables variables = SystemEnvironmentVariables.createEnvironmentVariables();
+        blogClient = new BlogClient(variables.getProperty("base.uri"));
+    }
 
     public void initExistingUser(String username) {
-        user = BlogClient.getExistingUser(username);
+        user = blogClient.getExistingUser(username);
     }
 
     @Step
     public void fetchPosts() {
-        posts = BlogClient.getPosts(user);
+        posts = blogClient.getPosts(user);
+        assertThat(posts).hasSizeGreaterThan(0);
     }
 
     @Step
     public void fetchAllCommentsForPosts() {
-        allCommentsForUsersPosts = BlogClient.getCommentsForPosts(posts);
+        allCommentsForUsersPosts = blogClient.getCommentsForPosts(posts);
+        assertThat(allCommentsForUsersPosts).hasSizeGreaterThan(0);
     }
 
     @Step
@@ -36,9 +46,6 @@ public class BlogUserSteps {
         List<String> mailAddresses = allCommentsForUsersPosts.stream()
                 .map(Comment::getEmailAddress)
                 .collect(Collectors.toList());
-
-        // ToDo: remove following artificial failure
-        mailAddresses.set(0, mailAddresses.get(0) + "@//enforcing failure");
 
         EmailValidator emailValidator = EmailValidator.getInstance();
         assertThat(mailAddresses)
