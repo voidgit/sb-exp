@@ -14,8 +14,6 @@
         <serenity.version>2.0.52</serenity.version>
         <serenity.cucumber.version>1.9.39</serenity.cucumber.version>
 
-        <!--ToDo: draft-->
-        <base.uri>https://jsonplaceholder.typicode.com/</base.uri>
     </properties>
 
     <repositories>
@@ -88,11 +86,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <!-- CircleCI build workaround from https://discuss.circleci.com/t/circleci-build-failure-on-openjdk-image/26104 -->
-                    <argLine>${surefireArgLine} -Xms1024m -Xmx2048m</argLine>
                     <reuseForks>true</reuseForks>
                     <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
-                <!--<version>2.20.1</version>&lt;!&ndash;$NO-MVN-MAN-VER$&ndash;&gt;-->
                 <version>3.0.0-M3</version>
             </plugin>
             <plugin>
@@ -103,9 +99,6 @@
                         <include>**/*.java</include>
                     </includes>
                     <argLine>-Xmx512m</argLine>
-                    <systemPropertyVariables>
-                        <base.uri>${base.uri}</base.uri>
-                    </systemPropertyVariables>
                     <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
                 <executions>
